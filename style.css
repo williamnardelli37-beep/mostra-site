@@ -1,0 +1,264 @@
+/* CSS COMPLETO - ENGENHARIA DE ALTO PADRÃO
+   Foco: Imagens com tamanho padronizado e Header Duplo Mobile
+*/
+
+:root {
+    --primary: #FFD700;    
+    --secondary: #000000;  
+    --white: #FFFFFF;
+    --gray-light: #F4F4F4;
+    --gray-dark: #1A1A1A;
+    --font-main: 'Montserrat', sans-serif;
+    --font-title: 'Oswald', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+/* RESET E BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--white);
+    color: var(--secondary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* HEADER FIXO */
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* NAVEGAÇÃO PC E TABLET */
+.navigation ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navigation ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.btn-cta {
+    background: var(--primary);
+    color: var(--secondary) !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+    padding: 0 5%;
+}
+
+.video-bg {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); z-index: 0;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: clamp(2.2rem, 8vw, 4rem);
+    text-transform: uppercase;
+}
+
+.yellow-line {
+    width: 60px; height: 4px;
+    background: var(--primary);
+    margin: 1.5rem auto;
+}
+
+/* SEÇÕES */
+.section-container {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.bg-black { background-color: var(--secondary); color: var(--white); }
+
+.title-impact {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+/* =============================================
+   PADRONIZAÇÃO DE IMAGENS (A SOLUÇÃO DO PROBLEMA)
+   =============================================
+*/
+
+/* Imagem Principal da seção "Sobre" */
+.img-inner {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    border-left: 8px solid var(--primary);
+}
+
+.img-inner img {
+    width: 100%;
+    height: 450px; /* Altura fixa para PC */
+    object-fit: cover; /* Faz a imagem preencher o espaço sem esticar */
+    display: block;
+    filter: none !important;
+}
+
+/* Imagens da Lista de Serviços (Obra Comercial/Residencial) */
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+.service-item.reverse { flex-direction: row-reverse; }
+
+.s-img {
+    flex: 1;
+    width: 100%;
+    height: 350px; /* Altura padronizada para as imagens de serviços */
+    overflow: hidden;
+    border-radius: 5px;
+    background: #222;
+}
+
+.s-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que fotos horizontais ou verticais fiquem bonitas */
+    display: block;
+}
+
+.s-text { flex: 1; }
+
+/* =============================================
+   RESPONSIVIDADE CELULAR (HEADER DUPLO)
+   =============================================
+*/
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .logo {
+        padding: 12px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navigation {
+        width: 100%;
+        background: #111;
+        border-top: 1px solid #222;
+    }
+
+    .navigation ul {
+        gap: 0;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+
+    .navigation ul li a {
+        font-size: 0.7rem;
+    }
+
+    .btn-cta {
+        padding: 5px 8px !important;
+        font-size: 0.65rem !important;
+    }
+
+    /* Ajuste das Imagens no Mobile */
+    .img-inner img {
+        height: 300px; /* Reduz altura no celular para não ficar gigante */
+    }
+
+    .s-img {
+        height: 250px; /* Altura menor para fotos de serviços no celular */
+    }
+
+    .grid-2 { grid-template-columns: 1fr; }
+    .service-item, .service-item.reverse { flex-direction: column; }
+    .hero { padding-top: 100px; }
+}
+
+/* FOOTER */
+.footer {
+    background: var(--secondary);
+    color: var(--white);
+    padding: 60px 5% 20px;
+    text-align: center;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
