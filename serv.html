@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="watts.jpeg" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GM Obras | Orçamento Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --amarelo: #FFD700;
+            --preto: #000000;
+            --preto-suave: #1a1a1a;
+            --branco: #ffffff;
+            --cinza: #f2f2f2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--branco); color: var(--preto); overflow-x: hidden; }
+
+
+        /* Header */
+        header {
+            background-color: var(--preto);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--amarelo);
+        }
+        header h1 { color: var(--amarelo); font-size: 3rem; letter-spacing: -1px; }
+
+        .wrapper { max-width: 1000px; margin: -40px auto 50px; padding: 0 20px; }
+
+        .tabs-container {
+            display: flex;
+            background: var(--branco);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 25px; border: none; background: var(--branco);
+            cursor: pointer; font-weight: 700; display: flex;
+            flex-direction: column; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .tab-btn.active { background: var(--amarelo); border-bottom: 4px solid var(--preto); }
+
+        .content-section {
+            display: none; animation: slideUp 0.6s ease;
+            background: var(--branco); padding: 30px;
+            border-radius: 12px; border: 1px solid #ddd;
+        }
+        .content-section.active { display: block; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .info-image { width: 100%; height: 350px; background-size: cover; background-position: center; border-radius: 8px; border: 4px solid var(--preto); }
+
+        /* Formulário */
+        .form-title { margin: 25px 0 10px; font-weight: 800; color: #666; font-size: 0.85rem; text-transform: uppercase; }
+        .input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        input, textarea { width: 100%; padding: 15px; border: 2px solid var(--cinza); border-radius: 8px; outline: none; transition: 0.3s; font-size: 1rem; }
+        input:focus { border-color: var(--amarelo); }
+
+        .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .option-card { border: 2px solid var(--cinza); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: 0.2s; }
+        .option-card:hover { border-color: var(--amarelo); background: #fffdf0; }
+        .option-card input { width: 18px; height: 18px; accent-color: var(--preto); }
+
+        .btn-cta {
+            background: var(--preto); color: var(--amarelo); width: 100%; padding: 22px;
+            border: none; border-radius: 8px; font-size: 1.3rem; font-weight: 800;
+            cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 15px; transition: 0.3s;
+        }
+        .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        @media (max-width: 768px) { .info-grid, .input-group { grid-template-columns: 1fr; } .tabs-container { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+
+
+<header>
+    <h1>GM OBRAS</h1>
+    <p style="color: white; opacity: 0.8; margin-top: 5px;">Excelência em Engenharia e Construção</p>
+</header>
+
+<div class="wrapper">
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab('construcao')"><i class="fas fa-hammer"></i> CONSTRUÇÃO</button>
+        <button class="tab-btn" onclick="switchTab('reforma')"><i class="fas fa-paint-roller"></i> REFORMA</button>
+    </div>
+
+    <div id="construcao" class="content-section active">
+        <div class="info-grid">
+            <div class="info-text">
+                <h2>Obras e Projetos</h2>
+                <div class="form-title">Serviços Disponíveis:</div>
+                <div class="options-grid">
+                    <label class="option-card"><input type="checkbox" class="item" value="Casas de Alvenaria"> Casas de Alvenaria</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Casas de Madeira"> Casas de Madeira</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Fundação/Alicerce"> Fundação / Alicerce</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Instalações Hidráulicas"> Inst. Hidráulicas</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Instalações Elétricas"> Inst. Elétricas</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Laje e Telhado"> Laje e Telhado</label>
+                </div>
+            </div>
+            <div class="info-image" style="background-image: url('https://casaeconstrucao.vivadecora.com.br/wp-content/uploads/2018/06/constru%C3%A7%C3%A3o-de-casas-com-telhas-de-fibrocimento.jpg');"></div>
+        </div>
+    </div>
+
+    <div id="reforma" class="content-section">
+        <div class="info-grid">
+            <div class="info-text">
+                <h2>Reformas e Reparos</h2>
+                <div class="form-title">Serviços de Acabamento:</div>
+                <div class="options-grid">
+                    <label class="option-card"><input type="checkbox" class="item" value="Pintura Residencial"> Pintura</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Pintura Predial"> Pintura Predial</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Revestimentos"> Revestimentos</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Gesso Drywall"> Gesso Drywall</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Instalação de Mobiliário"> Inst. de Mobiliário</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Manutenções e Adequações"> Manut. e Adequações</label>
+                     <label class="option-card"><input type="checkbox" class="item" value="Reforma Completa"> Reforma Completa</label>
+                </div>
+            </div>
+            <div class="info-image" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80');"></div>
+        </div>
+    </div>
+
+    <div class="content-section active" style="margin-top: -30px; border-top: none; border-radius: 0 0 12px 12px;">
+        <div class="form-title" style="color: #000;">DADOS PARA CONTATO:</div>
+        <div class="input-group">
+            <input type="text" id="nome" placeholder="Nome Completo">
+            <input type="text" id="tel" placeholder="Telefone (WhatsApp)">
+        </div>
+        <div class="input-group">
+            <input type="text" id="cidade" placeholder="Cidade">
+            <input type="text" id="endereco" placeholder="Endereço da Obra">
+        </div>
+        <textarea id="obs" rows="3" placeholder="Descreva brevemente sua necessidade..."></textarea>
+
+        <button class="btn-cta" onclick="enviarWhatsApp()">
+            <i class="fab fa-whatsapp"></i> ENVIAR SOLICITAÇÃO
+        </button>
+    </div>
+</div>
+
+<script>
+    let tipoAtual = "Construção";
+
+    // Efeito de Entrada
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('intro-overlay').classList.add('intro-hidden');
+        }, 2500); // 2.5 segundos de animação
+        carregarDados();
+    });
+
+    const campos = ['nome', 'tel', 'cidade', 'endereco', 'obs'];
+    campos.forEach(id => {
+        document.getElementById(id).addEventListener('input', (e) => {
+            localStorage.setItem('gm_' + id, e.target.value);
+        });
+    });
+
+    function carregarDados() {
+        campos.forEach(id => {
+            const salvo = localStorage.getItem('gm_' + id);
+            if(salvo) document.getElementById(id).value = salvo;
+        });
+    }
+
+    function switchTab(tipo) {
+        tipoAtual = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        document.getElementById('construcao').classList.remove('active');
+        document.getElementById('reforma').classList.remove('active');
+        document.getElementById(tipo).classList.add('active');
+    }
+
+    function enviarWhatsApp() {
+        const nome = document.getElementById('nome').value.trim();
+        const tel = document.getElementById('tel').value.trim();
+        const cidade = document.getElementById('cidade').value.trim();
+        const endereco = document.getElementById('endereco').value.trim();
+        const obs = document.getElementById('obs').value.trim();
+
+        if (nome.split(' ').filter(n => n !== "").length < 2) {
+            alert("Por favor, informe seu nome completo.");
+            return;
+        }
+        if (!tel || !cidade) {
+            alert("Preencha Telefone e Cidade.");
+            return;
+        }
+
+        let selecionados = [];
+        document.querySelectorAll('.item:checked').forEach(i => selecionados.push(i.value));
+
+        if (selecionados.length === 0) {
+            alert("Selecione ao menos um serviço.");
+            return;
+        }
+
+        const numeroWhats = "5551999999999"; // COLOQUE SEU WHATSAPP AQUI
+        const mensagem = `*GM OBRAS - SOLICITAÇÃO*%0A%0A` +
+                         `*Tipo:* ${tipoAtual}%0A` +
+                         `*Cliente:* ${nome}%0A` +
+                         `*Contato:* ${tel}%0A` +
+                         `*Local:* ${cidade} - ${endereco}%0A` +
+                         `*Serviços:* ${selecionados.join(", ")}%0A` +
+                         `*Obs:* ${obs}`;
+
+        campos.forEach(id => localStorage.removeItem('gm_' + id));
+        window.open(`https://wa.me/${numeroWhats}?text=${mensagem}`);
+    }
+</script>
+
+</body>
+</html>

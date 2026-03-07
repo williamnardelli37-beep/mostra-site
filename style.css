@@ -29,34 +29,66 @@ body {
     overflow-x: hidden;
 }
 
+
+:root {
+    --primary: #FFD700; /* Amarelo Vibrante (Gold) */
+    --bg-dark: rgba(0, 0, 0, 0.95);
+    --text-light: #FFFFFF;
+}
+
 /* HEADER FIXO */
 .header-wrapper {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: var(--bg-dark);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 2px solid var(--primary);
+    /* Borda amarela na parte inferior */
+    border-bottom: 3px solid var(--primary); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.8rem 5%;
+    padding: 0 5%; /* Removi o padding vertical para a imagem encostar se necessário */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 80px; /* Altura fixa da sua Navigation Bar */
 }
 
-.logo {
-    font-family: var(--font-title);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--white);
+/* CONTAINER DA IMAGEM/LOGO */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Faz o link ocupar a altura total da nav */
+    padding: 10px 0; /* Espaçamento interno para a logo não colar na borda */
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.logo-wrapper img {
+    height: 100%;    /* Força a imagem a ter a altura do wrapper */
+    width: auto;      /* Mantém a proporção original */
+    display: block;
+    object-fit: contain;
+    /* Opcional: filtro para dar brilho se a logo for escura */
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2));
+}
+
+/* ESTILO DOS LINKS (PARA COMBINAR) */
+.nav-links a {
+    color: var(--text-light);
     text-decoration: none;
-    letter-spacing: 2px;
+    font-weight: bold;
     text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary); /* Links ficam amarelos no hover */
 }
 
 /* NAVEGAÇÃO PC E TABLET */
@@ -85,41 +117,85 @@ body {
 }
 
 /* HERO SECTION */
+/* CONTAINER PRINCIPAL */
 .hero {
     position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
     text-align: center;
-    padding: 0 5%;
+    padding: 0 8%; /* Aumentei o respiro lateral */
+    overflow: hidden;
 }
 
-.video-bg {
-    position: absolute; top: 0; left: 0;
+/* SLIDER DE FUNDO (Troca a cada 0.5s) */
+.hero-slider {
+    position: absolute;
+    top: 0; left: 0;
     width: 100%; height: 100%;
-    object-fit: cover; z-index: -1;
+    z-index: -1;
 }
 
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* OVERLAY CLARO */
 .hero-overlay {
-    position: absolute; top: 0; left: 0;
+    position: absolute; 
+    top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5); z-index: 0;
+    background: rgba(255, 255, 255, 0.3); 
+    z-index: 0;
 }
 
-.hero-content { position: relative; z-index: 1; max-width: 800px; }
+/* CONTEÚDO */
+.hero-content { 
+    position: relative; 
+    z-index: 1; 
+    max-width: 850px; 
+}
 
+/* TÍTULO - AGORA MENOR E EM AMARELO */
 .hero h1 {
     font-family: var(--font-title);
-    font-size: clamp(2.2rem, 8vw, 4rem);
+    /* Ajustado: Mínimo 2rem, Ideal 7vw, Máximo 4.2rem */
+    font-size: clamp(2rem, 7vw, 4.2rem); 
     text-transform: uppercase;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffcc00; /* Mesma cor da linha */
+    margin-bottom: 15px;
 }
 
+/* LINHA AMARELA */
 .yellow-line {
-    width: 60px; height: 4px;
-    background: var(--primary);
-    margin: 1.5rem auto;
+    width: 80px; /* Menor para harmonizar com o título */
+    height: 4px;
+    background-color: #ffcc00; 
+    margin: 15px auto;
+}
+
+/* TEXTO EM PRETO - TAMANHO REDUZIDO */
+.hero p {
+    color: #000000;
+    /* Ajustado: Mínimo 1.1rem, Ideal 2.2vw, Máximo 1.5rem */
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
 }
 
 /* SEÇÕES */
@@ -127,6 +203,7 @@ body {
     padding: 80px 5%;
     max-width: 1200px;
     margin: 0 auto;
+    border-radius: 20px;
 }
 
 .grid-2 {
@@ -247,18 +324,38 @@ body {
 }
 
 /* FOOTER */
+/* CONTAINER DO FOOTER */
 .footer {
     background: var(--secondary);
     color: var(--white);
     padding: 60px 5% 20px;
     text-align: center;
+    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Linha sutil amarela */
 }
 
 .footer-grid {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start; /* Alinha os itens pelo topo */
     max-width: 1200px;
     margin: 0 auto 30px;
     flex-wrap: wrap;
     gap: 30px;
 }
+
+/* A MÁGICA PARA A FOTO NO FOOTER */
+.footer-logo-wrapper {
+    height: 60px; /* Define a altura máxima que a foto pode ter no footer */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza se estiver sozinho */
+    margin-bottom: 20px;
+}
+
+.footer-logo-wrapper img {
+    height: 100%;    /* Ocupa 100% da altura da div pai (os 60px) */
+    width: auto;      /* Mantém a proporção da largura */
+    object-fit: contain; /* Garante que a foto não seja cortada nem esticada */
+
+}
+
