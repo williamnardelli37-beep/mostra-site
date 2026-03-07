@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento | GM Obras</title>
+    <link rel="shortcut icon" href="watts.jpeg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #FFD700;
+            --secondary: #1A1A1A;
+            --bg: #f0f0f0;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary);
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .budget-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 12px solid var(--primary); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .card-logo { text-align: center; margin-bottom: 25px; }
+        .card-logo img { max-width: 200px; height: auto; border-radius: 10px; }
+
+        .card-header { text-align: center; margin-bottom: 30px; }
+        .card-header h1 {
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+            font-size: 26px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 6px 14px;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .construction-form { display: flex; flex-direction: column; gap: 18px; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #eeeeee;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            background: #fff;
+        }
+
+        .btn-main {
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 20px;
+            font-weight: 800;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .btn-main:hover { background: #000; transform: translateY(-2px); }
+
+        .fab-container { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
+        .fab { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+        .fab-whats { background-color: #25D366; }
+        .fab-insta { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+        .fab:hover { transform: scale(1.1); }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .budget-card { padding: 25px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="main-container">
+        <section class="budget-card">
+            <div class="card-logo">
+                <img src="WhatsApp Image 2026-03-06 at 07.58.44.jpeg" alt="GM Obras Logo">
+            </div>
+
+            <div class="card-header">
+                <span class="tag">Engenharia & Infraestrutura</span>
+                <h1>Orçamento Online</h1>
+                <p>Dados salvos automaticamente enquanto você digita.</p>
+            </div>
+
+            <form id="formOrcamento" class="construction-form">
+                <div class="form-grid">
+                    <div class="field">
+                        <label>Nome / Empresa</label>
+                        <input type="text" id="nome" class="save-local" placeholder="Nome completo" required>
+                    </div>
+                    <div class="field">
+                        <label>Seu WhatsApp</label>
+                        <input type="tel" id="telefone" class="save-local" placeholder="(00) 00000-0000" maxlength="15" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="field">
+                        <label>Tipo de Serviço</label>
+                        <select id="servico" class="save-local" required>
+                            <option value="" disabled selected>O que você precisa?</option>
+                            <option value="Construção">Construção</option>
+                            <option value="Reforma">Reforma</option>
+                            <option value="Manutenções">Manutenções</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="cidade">Cidade da Obra</label>
+                        <input type="text" id="cidade" class="save-local" placeholder="Ex: Caxias do Sul" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Descrição da Obra</label>
+                    <textarea id="descricao" class="save-local" rows="4" placeholder="Detalhes do serviço..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-main">
+                    ENVIAR PARA WHATSAPP <i class="fas fa-hard-hat"></i>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <div class="fab-container">
+        <a href="https://www.instagram.com/gmobras_/" class="fab fab-insta" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5554981081564" class="fab fab-whats" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <script>
+        // --- 1. LÓGICA DO LOCALSTORAGE ---
+        const formFields = document.querySelectorAll('.save-local');
+
+        // Carregar dados salvos ao abrir a página
+        window.addEventListener('load', () => {
+            formFields.forEach(field => {
+                const savedValue = localStorage.getItem(`gm_obras_${field.id}`);
+                if (savedValue) {
+                    field.value = savedValue;
+                }
+            });
+        });
+
+        // Salvar dados sempre que houver alteração
+        formFields.forEach(field => {
+            field.addEventListener('input', () => {
+                localStorage.setItem(`gm_obras_${field.id}`, field.value);
+            });
+        });
+
+        // --- 2. MÁSCARA DE TELEFONE ---
+        const telInput = document.getElementById('telefone');
+        telInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, "");
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            if (value.length > 10) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+            } else if (value.length > 5) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
+            } else if (value.length > 0) {
+                value = value.replace(/^(\d{0,2})/, "($1");
+            }
+            e.target.value = value;
+        });
+
+        // --- 3. ENVIO PARA WHATSAPP ---
+        document.getElementById('formOrcamento').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const numWhats = "5554981081564";
+            const nome = document.getElementById('nome').value;
+            const tel = document.getElementById('telefone').value;
+            const servico = document.getElementById('servico').value;
+            const cidade = document.getElementById('cidade').value;
+            const desc = document.getElementById('descricao').value;
+
+            if(tel.length < 14) {
+                alert("Por favor, insira o WhatsApp completo.");
+                return;
+            }
+
+            const texto = `*GM OBRAS - NOVO ORÇAMENTO*%0A%0A` +
+                          `*Cliente:* ${nome}%0A` +
+                          `*Contato:* ${tel}%0A` +
+                          `*Serviço:* ${servico}%0A` +
+                          `*Cidade:* ${cidade}%0A` +
+                          `*Descrição:* ${desc}`;
+
+            // Abrir WhatsApp
+            window.open(`https://wa.me/${numWhats}?text=${texto}`, '_blank');
+
+            // Opcional: Limpar storage após envio bem-sucedido
+            // localStorage.clear();
+        });
+    </script>
+</body>
+</html>

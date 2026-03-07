@@ -18,8 +18,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: var(--branco); color: var(--preto); overflow-x: hidden; }
 
-
-        /* Header */
         header {
             background-color: var(--preto);
             padding: 60px 20px;
@@ -58,7 +56,6 @@
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
         .info-image { width: 100%; height: 350px; background-size: cover; background-position: center; border-radius: 8px; border: 4px solid var(--preto); }
 
-        /* Formulário */
         .form-title { margin: 25px 0 10px; font-weight: 800; color: #666; font-size: 0.85rem; text-transform: uppercase; }
         .input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
         input, textarea { width: 100%; padding: 15px; border: 2px solid var(--cinza); border-radius: 8px; outline: none; transition: 0.3s; font-size: 1rem; }
@@ -76,12 +73,27 @@
         }
         .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-        @media (max-width: 768px) { .info-grid, .input-group { grid-template-columns: 1fr; } .tabs-container { flex-direction: column; } }
+        .fab-wrapper {
+          position: fixed; bottom: 30px; right: 30px;
+          display: flex; flex-direction: column; gap: 15px; z-index: 9999; align-items: center;
+        }
+
+        .fab-btn {
+          width: 60px; height: 60px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          color: #fff; font-size: 28px; text-decoration: none;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .whatsapp { background-color: #25d366; }
+        .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+        .fab-btn:hover { transform: translateY(-5px) scale(1.05); }
+
+        @media (max-width: 768px) { .info-grid, .input-group { grid-template-columns: 1fr; } .tabs-container { flex-direction: column; } .wrapper { margin-top: -20px; } }
     </style>
 </head>
 <body>
-
-
 
 <header>
     <h1>GM OBRAS</h1>
@@ -108,7 +120,7 @@
                     <label class="option-card"><input type="checkbox" class="item" value="Laje e Telhado"> Laje e Telhado</label>
                 </div>
             </div>
-            <div class="info-image" style="background-image: url('https://casaeconstrucao.vivadecora.com.br/wp-content/uploads/2018/06/constru%C3%A7%C3%A3o-de-casas-com-telhas-de-fibrocimento.jpg');"></div>
+            <div class="info-image" style="background-image: url('https://instagram.fcxj3-1.fna.fbcdn.net/v/t51.82787-15/568358004_18107198656609271_6888614785643335614_n.jpg?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=107&ig_cache_key=MzQwMDM4MTIzMjYxNjQyNDg5OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjExNzB4MjA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=5JyJEUa406cQ7kNvwG4Z7Dr&_nc_oc=AdmQ0UHrHwmNmVkZnBknfzT49ZGG0ulCKYD29anTjLUV4QBfOS1PPKBhPoG0eWMUECx7wjCSNt2vxh0HNuqsITn3&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fcxj3-1.fna&_nc_gid=9mVHKJDyOb0MwLHK6kubFg&_nc_ss=8&oh=00_AfzTdZGI_xmpd5Xiz9txoEUnz7R3cLXvGYYQl4LWQDPEMg&oe=69B21BCA');"></div>
         </div>
     </div>
 
@@ -118,16 +130,16 @@
                 <h2>Reformas e Reparos</h2>
                 <div class="form-title">Serviços de Acabamento:</div>
                 <div class="options-grid">
-                    <label class="option-card"><input type="checkbox" class="item" value="Pintura Residencial"> Pintura</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Pintura"> Pintura</label>
                     <label class="option-card"><input type="checkbox" class="item" value="Pintura Predial"> Pintura Predial</label>
                     <label class="option-card"><input type="checkbox" class="item" value="Revestimentos"> Revestimentos</label>
                     <label class="option-card"><input type="checkbox" class="item" value="Gesso Drywall"> Gesso Drywall</label>
                     <label class="option-card"><input type="checkbox" class="item" value="Instalação de Mobiliário"> Inst. de Mobiliário</label>
                     <label class="option-card"><input type="checkbox" class="item" value="Manutenções e Adequações"> Manut. e Adequações</label>
-                     <label class="option-card"><input type="checkbox" class="item" value="Reforma Completa"> Reforma Completa</label>
+                    <label class="option-card"><input type="checkbox" class="item" value="Reforma Completa"> Reforma Completa</label>
                 </div>
             </div>
-            <div class="info-image" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80');"></div>
+            <div class="info-image" style="background-image: url('obras2.jpeg');"></div>
         </div>
     </div>
 
@@ -135,7 +147,7 @@
         <div class="form-title" style="color: #000;">DADOS PARA CONTATO:</div>
         <div class="input-group">
             <input type="text" id="nome" placeholder="Nome Completo">
-            <input type="text" id="tel" placeholder="Telefone (WhatsApp)">
+            <input type="text" id="tel" placeholder="Telefone (WhatsApp)" maxlength="15">
         </div>
         <div class="input-group">
             <input type="text" id="cidade" placeholder="Cidade">
@@ -149,33 +161,52 @@
     </div>
 </div>
 
+<div class="fab-wrapper">
+  <a href="https://wa.me/5554981081564" class="fab-btn whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.instagram.com/gmobras_/" class="fab-btn instagram" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+
 <script>
     let tipoAtual = "Construção";
+    const campos = ['nome', 'tel', 'cidade', 'endereco', 'obs'];
 
-    // Efeito de Entrada
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.getElementById('intro-overlay').classList.add('intro-hidden');
-        }, 2500); // 2.5 segundos de animação
-        carregarDados();
+    // Máscara de Telefone Dinâmica
+    document.getElementById('tel').addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.length > 11) value = value.slice(0, 11);
+        if (value.length > 10) {
+            value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+        } else if (value.length > 5) {
+            value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        } else if (value.length > 2) {
+            value = value.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
+        } else if (value.length > 0) {
+            value = value.replace(/^(\d{0,2})/, "($1");
+        }
+        e.target.value = value;
     });
 
-    const campos = ['nome', 'tel', 'cidade', 'endereco', 'obs'];
+    // Local Storage: Salvar ao digitar
     campos.forEach(id => {
         document.getElementById(id).addEventListener('input', (e) => {
-            localStorage.setItem('gm_' + id, e.target.value);
+            localStorage.setItem('gm_v2_' + id, e.target.value);
         });
     });
 
-    function carregarDados() {
+    // Local Storage: Carregar ao iniciar
+    window.addEventListener('load', () => {
         campos.forEach(id => {
-            const salvo = localStorage.getItem('gm_' + id);
+            const salvo = localStorage.getItem('gm_v2_' + id);
             if(salvo) document.getElementById(id).value = salvo;
         });
-    }
+    });
 
     function switchTab(tipo) {
-        tipoAtual = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+        tipoAtual = tipo === 'construcao' ? "Construção" : "Reforma";
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         event.currentTarget.classList.add('active');
         document.getElementById('construcao').classList.remove('active');
@@ -190,12 +221,12 @@
         const endereco = document.getElementById('endereco').value.trim();
         const obs = document.getElementById('obs').value.trim();
 
-        if (nome.split(' ').filter(n => n !== "").length < 2) {
+        if (nome.split(' ').length < 2) {
             alert("Por favor, informe seu nome completo.");
             return;
         }
-        if (!tel || !cidade) {
-            alert("Preencha Telefone e Cidade.");
+        if (tel.length < 14 || !cidade) {
+            alert("Preencha WhatsApp e Cidade corretamente.");
             return;
         }
 
@@ -207,7 +238,7 @@
             return;
         }
 
-        const numeroWhats = "5551999999999"; // COLOQUE SEU WHATSAPP AQUI
+        const numeroWhats = "5554981081564"; 
         const mensagem = `*GM OBRAS - SOLICITAÇÃO*%0A%0A` +
                          `*Tipo:* ${tipoAtual}%0A` +
                          `*Cliente:* ${nome}%0A` +
@@ -216,7 +247,8 @@
                          `*Serviços:* ${selecionados.join(", ")}%0A` +
                          `*Obs:* ${obs}`;
 
-        campos.forEach(id => localStorage.removeItem('gm_' + id));
+        // Limpa storage após o envio
+        campos.forEach(id => localStorage.removeItem('gm_v2_' + id));
         window.open(`https://wa.me/${numeroWhats}?text=${mensagem}`);
     }
 </script>
