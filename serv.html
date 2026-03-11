@@ -14,17 +14,90 @@
             --branco: #ffffff;
             --cinza: #f2f2f2;
         }
+.btn-home {
+    /* Seu Estilo Original */
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: 0.3s;
 
+    /* Posicionamento Correto */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-home:hover { 
+    background: var(--amarelo); /* Usei a variável amarelo do seu projeto */
+    color: #000; 
+    border-color: var(--amarelo); 
+}
+
+/* Ajuste para não sumir no celular */
+@media (max-width: 480px) {
+    .btn-home {
+        top: 15px;
+        left: 15px;
+        padding: 6px 12px;
+        font-size: 9px;
+    }
+}
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: var(--branco); color: var(--preto); overflow-x: hidden; }
 
         header {
-            background-color: var(--preto);
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 8px solid var(--amarelo);
-        }
-        header h1 { color: var(--amarelo); font-size: 3rem; letter-spacing: -1px; }
+    background-color: var(--preto);
+    padding: 40px 20px; /* Espaçamento interno balanceado */
+    text-align: center;
+    border-bottom: 8px solid var(--amarelo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header img {
+    /* Ajuste de Tamanho */
+    width: 100%;
+    max-width: 280px; /* Tamanho ideal para PC */
+    height: auto;
+    object-fit: contain;
+    
+    /* Melhora de Qualidade Visual */
+    image-rendering: -webkit-optimize-contrast; /* Deixa a logo mais nítida */
+    filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.5));
+}
+
+/* --- AJUSTES RESPONSIVOS (CELULAR E TABLET) --- */
+
+@media (max-width: 768px) {
+    header {
+        padding: 30px 15px;
+    }
+    header img {
+        max-width: 200px; /* Logo um pouco menor no Tablet */
+    }
+    .wrapper {
+        margin-top: -30px; /* Ajusta a sobreposição das abas */
+    }
+}
+
+@media (max-width: 480px) {
+    header img {
+        max-width: 160px; /* Logo ideal para telas pequenas de Celular */
+    }
+    header {
+        padding: 25px 10px;
+    }
+}
 
         .wrapper { max-width: 1000px; margin: -40px auto 50px; padding: 0 20px; }
 
@@ -96,8 +169,8 @@
 <body>
 
 <header>
-    <h1>GM OBRAS</h1>
-    <p style="color: white; opacity: 0.8; margin-top: 5px;">Excelência em Engenharia e Construção</p>
+    <img src="WhatsApp Image 2026-03-06 at 07.58.44.jpeg" alt="">
+    <a href="index.html" class="btn-home"><i class="fas fa-arrow-left"></i> Voltar</a>
 </header>
 
 <div class="wrapper">
