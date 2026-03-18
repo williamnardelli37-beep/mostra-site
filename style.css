@@ -1,3 +1,4 @@
+
 :root {
     --primary: #FFD700;    
     --secondary: #000000;  
@@ -18,6 +19,7 @@ body {
 }
 
 /* --- HEADER RESPONSIVO --- */
+/* --- SEU HEADER ORIGINAL (NÃO ALTERADO) --- */
 .header-wrapper {
     position: fixed;
     top: 0; width: 100%;
@@ -64,45 +66,101 @@ body {
     font-weight: 700;
 }
 
-/* --- HERO CARROSSEL --- */
-.hero {
+/* --- GALERIA TEMA OBRAS (AJUSTADA) --- */
+:root {
+    --primary: #ffcc00; 
+    --dark: #121212;
+    --transition: all 0.3s ease;
+    --shadow-solid: 5px 5px 0px #000;
+}
+
+.galeria-wrapper {
     position: relative;
-    height: 100vh;
-    width: 100%;
+    padding: 80px 0 0px; /* Colado no header */
+    background: #1a1a1a;
+    display: flex;
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    min-height: 600px;   /* Garante espaço para as fotos de 500px */
     overflow: hidden;
+}
+
+#galeria {
+    display: flex;
+    gap: 15px;
+    padding: 50px 5%; 
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+#galeria::-webkit-scrollbar { display: none; }
+
+#galeria img {
+    flex: 0 0 auto;
+    width: calc((100% / 3) - 20px);
+    height: 460px;
+    box-shadow: var(--shadow-solid);
+    transition: var(--transition);
+}
+
+#galeria img:hover {
+    filter: grayscale(0%);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* --- BOTÕES CENTRALIZADOS --- */
+.btn-nav {
+    position: absolute;
+    /* O segredo para centralizar: */
+    top: 50%; 
+    margin-top: 40px; /* Compensa a altura do header para alinhar com o centro da imagem */
+    transform: translateY(-50%);
+    
+    z-index: 1100; 
+    background-color: var(--primary);
+    color: #000;
+    border: 3px solid #000;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--transition);
+    box-shadow: 4px 4px 0px #000;
 }
 
-.hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.btn-prev { left: 20px; }
+.btn-next { right: 20px; }
 
-.hero-track {
-    display: flex;
-    width: 300%;
-    height: 100%;
-    transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+.btn-nav:hover {
+    background-color: #fff;
+    transform: translateY(-50%) scale(1.1);
 }
 
-.slide {
-    width: 100vw;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
+.btn-nav:active {
+    box-shadow: 0px 0px 0px #000;
+    transform: translateY(-50%) translate(3px, 3px);
 }
 
-.hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+/* Responsividade */
+@media (max-width: 1024px) {
+    #galeria img { width: calc(50% - 20px); }
 }
 
-.hero-content { position: relative; z-index: 1; text-align: center; color: white; padding: 0 20px; }
-
-.hero h1 {
-    font-family: var(--font-title);
-    font-size: clamp(2rem, 8vw, 4rem);
-    text-transform: uppercase;
-    color: var(--primary);
+@media (max-width: 768px) {
+    #galeria img { width: calc(100% - 10px); }
+    .btn-nav { 
+        width: 45px; 
+        height: 45px; 
+        margin-top: 40px;
+    }
+    .btn-prev { left: 10px; }
+    .btn-next { right: 10px; }
 }
 
 .yellow-line { width: 60px; height: 4px; background: var(--primary); margin: 15px auto; }
@@ -169,4 +227,74 @@ body {
     
     .footer-grid { flex-direction: column; align-items: center; }
     .fab-btn { width: 50px; height: 50px; font-size: 20px; }
+}
+.filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #ccc;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.filter-btn.active {
+    background-color: #333; /* Cor de destaque */
+    color: white;
+    border-color: #333;
+}
+
+.filter-btn:hover {
+    background-color: #f0f0f0;
+}
+.hero-text-container {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    /* A cor solicitada #ffcc00 na borda esquerda */
+    border-left: 20px solid #ffcc00; 
+    
+    /* ESSENCIAL: Impede que a página vá para os lados */
+    box-sizing: border-box; 
+    overflow-x: hidden; /* Trava qualquer vazamento horizontal */
+    
+    margin: 40px auto;
+    width: 95%; /* Ajuste leve para dar margem nas laterais */
+    max-width: 1100px;
+    padding: 40px 20px;
+    transition: all 0.3s ease;
+}
+
+/* Título */
+.hero-text-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* Subtítulo */
+.hero-text-container p {
+    color: #cccccc;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- RESPONSIVIDADE (Ajuste para telas menores) --- */
+
+@media (max-width: 600px) {
+    .hero-text-container {
+        /* No celular, 20px de borda pode ser muito. 
+           Se quiser manter 20px, deixe como está. 
+           Se achar que rouba muito espaço, use 10px abaixo: */
+        border-left: 15px solid #ffcc00; 
+        padding: 30px 15px;
+        width: 100%; /* Ocupa a largura total sem estourar */
+    }
+    
+    .hero-text-container h1 {
+        font-size: 1.6rem;
+    }
 }

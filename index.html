@@ -18,30 +18,32 @@
             <nav class="navigation">
                 <ul>
                     <li><a href="#inicio">Início</a></li>
-                    <li><a href="serv.html">Serviços</a></li>
-                    <li><a href="teste.html" class="btn-cta">Orçamento</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="serv.html" class="btn-cta">Orçamento</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+<div class="galeria-wrapper">
+    <button class="btn-nav btn-prev" onclick="moverGaleria(-1)">❮</button>
+    
+    <div class="imgg" id="galeria">
+        <img src="obras1.jpeg" alt="Suspense 1">
+        <img src="obras2.jpeg" alt="Suspense 2">
+        <img src="obras3.jpeg" alt="Suspense 3">
+        <img src="obras4.jpeg" alt="Suspense 4">
+    </div>
 
-    <section id="inicio" class="hero">
-        <div class="hero-slider">
-            <div class="hero-track">
-                <div class="slide" style="background-image: url('obras2.jpeg');"></div>
-                <div class="slide" style="background-image: url('obras1.jpeg');"></div>
-                <div class="slide" style="background-image: url('obras3.jpeg');"></div>
-            </div>
-        </div>
-
+    <button class="btn-nav btn-next" onclick="moverGaleria(1)">❯</button>
+</div>
         <div class="hero-overlay"></div>
         
-        <div class="hero-content">
-            <h1>Excelência em cada detalhe</h1>
-            <div class="yellow-line"></div>
-            <p>Transformamos espaços residenciais e comerciais com alto padrão de acabamento em Caxias do Sul.</p>
-        </div>
+<div class="hero-text-container">
+    <h1>Excelência em cada detalhe</h1>
+    <p>Transformamos espaços residenciais e comerciais com alto padrão de acabamento em Caxias do Sul.</p>
+</div>
     </section>
+
 
     <section id="sobre" class="section-container">
         <div class="grid-2">
@@ -55,45 +57,38 @@
         </div>
     </section>
 
-    <section class="section-container bg-black">
-        <div class="grid-3">
-            <div class="feature-card">
-                <span class="f-icon">⚡</span>
-                <h3>Gestão de Prazos</h3>
-                <p>Cronogramas inteligentes que eliminam o estresse de obras intermináveis.</p>
-            </div>
-            <div class="feature-card highlighted">
-                <span class="f-icon">🛠️</span>
-                <h3>Acabamento Fino</h3>
-                <p>Especialistas em pedras naturais, porcelanatos de grande formato e iluminação.</p>
-            </div>
-            <div class="feature-card">
-                <span class="f-icon">🛡️</span>
-                <h3>Garantia Real</h3>
-                <p>Segurança estrutural e suporte pós-obra para sua total tranquilidade.</p>
-            </div>
-        </div>
-    </section>
+
 
     <section id="servicos" class="section-container">
-        <h2 class="title-impact centered">Especialidades</h2>
-        <div class="services-list">
-            <div class="service-item">
-                <div class="s-img"><img src="obras2.jpeg" alt="Reforma Residencial"></div>
-                <div class="s-text">
-                    <h4>Reformas Residenciais</h4>
-                    <p>Do conceito à entrega das chaves, cuidamos de cada detalhe para transformar seu lar.</p>
-                </div>
-            </div>
-            <div class="service-item reverse">
-                <div class="s-img"><img src="obras3.jpeg" alt="Obras e Construções"></div>
-                <div class="s-text">
-                    <h4>Obras e Construções</h4>
-                    <p>Execução ágil e técnica para que sua estrutura tome forma sem comprometer seu cronograma.</p>
-                </div>
+    <h2 class="title-impact centered">Especialidades</h2>
+
+    <div class="filter-wrapper" style="text-align: center; margin-bottom: 30px;">
+        <label for="service-filter" style="margin-right: 10px;">Filtrar por:</label>
+        <select id="service-filter" onchange="filterServices(this.value)" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <option value="todos">Mostrar Todos</option>
+            <option value="residencial">Reformas Residenciais</option>
+            <option value="construcao">Obras e Construções</option>
+        </select>
+    </div>
+
+    <div class="services-list">
+        <div class="service-item filter-item residencial">
+            <div class="s-img"><img src="obras2.jpeg" alt="Reforma Residencial"></div>
+            <div class="s-text">
+                <h4>Reformas Residenciais</h4>
+                <p>Do conceito à entrega das chaves, cuidamos de cada detalhe para transformar seu lar.</p>
             </div>
         </div>
-    </section>
+
+        <div class="service-item reverse filter-item construcao">
+            <div class="s-img"><img src="obras3.jpeg" alt="Obras e Construções"></div>
+            <div class="s-text">
+                <h4>Obras e Construções</h4>
+                <p>Execução ágil e técnica para que sua estrutura tome forma sem comprometer seu cronograma.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <footer id="contato" class="footer">
         <div class="footer-grid">
@@ -137,5 +132,32 @@
         // Troca de imagem a cada 4 segundos
         setInterval(moverCarrossel, 4000);
     </script>
+    <script>
+        function moverGaleria(direcao) {
+    const galeria = document.getElementById('galeria');
+    // Calcula a largura de uma imagem para saber quanto deslizar
+    const larguraItem = galeria.querySelector('img').offsetWidth + 20; // largura + gap
+    
+    galeria.scrollBy({
+        left: direcao * larguraItem,
+        behavior: 'smooth'
+    });
+}
+    </script>
+    <script>
+function filterServices(category) {
+    const items = document.querySelectorAll('.filter-item');
+
+    items.forEach(item => {
+        // Se selecionar "todos" ou se a categoria do item for a mesma da selecionada
+        if (category === 'todos' || item.classList.contains(category)) {
+            item.style.display = 'flex'; // Mostra
+            item.style.opacity = '1';    // Opcional: efeito de aparecer
+        } else {
+            item.style.display = 'none'; // Esconde
+        }
+    });
+}
+</script>
 </body>
 </html>
