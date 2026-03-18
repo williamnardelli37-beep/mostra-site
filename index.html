@@ -32,6 +32,8 @@
         <img src="obras2.jpeg" alt="Suspense 2">
         <img src="obras3.jpeg" alt="Suspense 3">
         <img src="obras4.jpeg" alt="Suspense 4">
+        <img src="foto3.jpg" alt="Suspense 7">
+        <img src="foto4.jpg" alt="Suspense 8">
     </div>
 
     <button class="btn-nav btn-next" onclick="moverGaleria(1)">❯</button>
@@ -42,7 +44,74 @@
     <h1>Excelência em cada detalhe</h1>
     <p>Transformamos espaços residenciais e comerciais com alto padrão de acabamento em Caxias do Sul.</p>
 </div>
-    </section>
+ 
+    <section id="servicos" class="section-container">
+    <h2 class="title-impact centered">Especialidades</h2>
+
+    <div class="filter-wrapper" style="text-align: center; margin-bottom: 30px;">
+        <label for="service-filter" style="margin-right: 10px;">Filtrar por:</label>
+        <select id="service-filter" onchange="filterServices(this.value)" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <option value="todos">Mostrar Todos</option>
+            <option value="residencial">Reformas Residenciais e Comercial</option>
+            <option value="alto-padrao">Reformas de Alto Padrão</option>
+            <option value="retrofit">Retrofit e Modernização</option>
+            <option value="estrutural">Reformas Estruturais</option>
+            <option value="construcao">Construções Residenciais, Comerciais e Industriais</option>
+            <option value="manutencao">Manutenção e Assistência Técnica</option>
+        </select>
+    </div>
+
+    <div class="services-list">
+        <div class="service-item filter-item residencial">
+            <div class="s-img"><img src="foto1.jpg" alt="Reforma Residencial"></div>
+            <div class="s-text">
+                <h4>Reformas Residenciais, Comerciais e de Ambientes</h4>
+                <p>Reformas completas ou parciais em casas, apartamentos e espaços comerciais.</p>
+            </div>
+        </div>
+
+        <div class="service-item reverse filter-item alto-padrao">
+            <div class="s-img"><img src="foto2.jpg" alt="Reformas de Alto Padrão"></div>
+            <div class="s-text">
+                <h4>Reformas de Alto Padrão</h4>
+                <p>Execução de reformas com acabamentos premium e melhorias técnicas de alto nível.</p>
+            </div>
+        </div>
+
+        <div class="service-item filter-item retrofit">
+            <div class="s-img"><img src="foto3.jpg" alt="Retrofit e Modernização"></div>
+            <div class="s-text">
+                <h4>Retrofit e Modernização</h4>
+                <p>Atualização de imóveis antigos adaptando o espaço às necessidades atuais.</p>
+            </div>
+        </div>
+
+        <div class="service-item reverse filter-item estrutural">
+            <div class="s-img"><img src="foto4.jpg" alt="Reformas Estruturais"></div>
+            <div class="s-text">
+                <h4>Reformas Estruturais</h4>
+                <p>Alterações de layout, reforços estruturais e adequações técnicas seguras.</p>
+            </div>
+        </div>
+
+        <div class="service-item filter-item construcao">
+            <div class="s-img"><img src="obras2.jpeg" alt="Construções"></div>
+            <div class="s-text">
+                <h4>Construções Residenciais, Comerciais e Industriais</h4>
+                <p>Execução completa desde a fundação até a entrega final, garantindo qualidade e segurança.</p>
+            </div>
+        </div>
+
+        <div class="service-item reverse filter-item manutencao">
+            <div class="s-img"><img src="foto6.jpg" alt="Manutenção"></div>
+            <div class="s-text">
+                <h4>Manutenção e Assistência Técnica</h4>
+                <p>Serviços de manutenção preventiva e corretiva para garantir a durabilidade das obras.</p>
+            </div>
+        </div>
+    </div>
+</section>
+  </section>
 
 
     <section id="sobre" class="section-container">
@@ -56,40 +125,7 @@
             </div>
         </div>
     </section>
-
-
-
-    <section id="servicos" class="section-container">
-    <h2 class="title-impact centered">Especialidades</h2>
-
-    <div class="filter-wrapper" style="text-align: center; margin-bottom: 30px;">
-        <label for="service-filter" style="margin-right: 10px;">Filtrar por:</label>
-        <select id="service-filter" onchange="filterServices(this.value)" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-            <option value="todos">Mostrar Todos</option>
-            <option value="residencial">Reformas Residenciais</option>
-            <option value="construcao">Obras e Construções</option>
-        </select>
-    </div>
-
-    <div class="services-list">
-        <div class="service-item filter-item residencial">
-            <div class="s-img"><img src="obras2.jpeg" alt="Reforma Residencial"></div>
-            <div class="s-text">
-                <h4>Reformas Residenciais</h4>
-                <p>Do conceito à entrega das chaves, cuidamos de cada detalhe para transformar seu lar.</p>
-            </div>
-        </div>
-
-        <div class="service-item reverse filter-item construcao">
-            <div class="s-img"><img src="obras3.jpeg" alt="Obras e Construções"></div>
-            <div class="s-text">
-                <h4>Obras e Construções</h4>
-                <p>Execução ágil e técnica para que sua estrutura tome forma sem comprometer seu cronograma.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
+    
     <footer id="contato" class="footer">
         <div class="footer-grid">
             <div class="f-brand">
