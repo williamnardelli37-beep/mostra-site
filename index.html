@@ -24,29 +24,46 @@
             </nav>
         </div>
     </header>
-<div class="galeria-wrapper">
-    <button class="btn-nav btn-prev" onclick="moverGaleria(-1)">❮</button>
-    
-    <div class="imgg" id="galeria">
-        <img src="obras1.jpeg" alt="Suspense 1">
-        <img src="obras2.jpeg" alt="Suspense 2">
-        <img src="obras3.jpeg" alt="Suspense 3">
-        <img src="obras4.jpeg" alt="Suspense 4">
-        <img src="foto3.jpg" alt="Suspense 7">
-        <img src="foto4.jpg" alt="Suspense 8">
+<div class="promo-container">
+    <div class="promo" id="lista-promo">
+        <div class="item-venda">
+            
+        </div>
+        <div class="item-venda">
+            <img src="obras2.jpeg" alt="">
+            
+        </div>
+        <div class="item-venda">
+            <img src="obras3.jpeg" alt="">
+            
+        </div>
+        <div class="item-venda">
+            <img src="obras4.jpeg" alt="">
+            
+        </div>
+        <div class="item-venda">
+            <img src="foto1.jpg" alt="">
+           
+        </div>
+        <div class="item-venda">
+            <img src="foto4.jpg" alt="">
+            
+        </div>
+        <div class="item-venda">
+            <img src="fotos1.jpg" alt="">
+        
+        </div>
     </div>
-
-    <button class="btn-nav btn-next" onclick="moverGaleria(1)">❯</button>
 </div>
-        <div class="hero-overlay"></div>
+
         
 <div class="hero-text-container">
     <h1>Excelência em cada detalhe</h1>
     <p>Transformamos espaços residenciais e comerciais com alto padrão de acabamento em Caxias do Sul.</p>
 </div>
+
  
-    <section id="servicos" class="section-container">
-    <h2 class="title-impact centered">Especialidades</h2>
+    
 
     <div class="filter-wrapper" style="text-align: center; margin-bottom: 30px;">
         <label for="service-filter" style="margin-right: 10px;">Filtrar por:</label>
@@ -60,13 +77,16 @@
             <option value="manutencao">Manutenção e Assistência Técnica</option>
         </select>
     </div>
+<section id="servicos" class="section-container">
+    <h2 class="title-impact centered">Reformas</h2>
 
     <div class="services-list">
         <div class="service-item filter-item residencial">
-            <div class="s-img"><img src="foto1.jpg" alt="Reforma Residencial"></div>
+            <div class="s-img"><img src="obras2.jpeg" alt="Reforma Residencial"></div>
             <div class="s-text">
                 <h4>Reformas Residenciais, Comerciais e de Ambientes</h4>
                 <p>Reformas completas ou parciais em casas, apartamentos e espaços comerciais.</p>
+                
             </div>
         </div>
 
@@ -93,15 +113,6 @@
                 <p>Alterações de layout, reforços estruturais e adequações técnicas seguras.</p>
             </div>
         </div>
-
-        <div class="service-item filter-item construcao">
-            <div class="s-img"><img src="obras2.jpeg" alt="Construções"></div>
-            <div class="s-text">
-                <h4>Construções Residenciais, Comerciais e Industriais</h4>
-                <p>Execução completa desde a fundação até a entrega final, garantindo qualidade e segurança.</p>
-            </div>
-        </div>
-
         <div class="service-item reverse filter-item manutencao">
             <div class="s-img"><img src="foto6.jpg" alt="Manutenção"></div>
             <div class="s-text">
@@ -109,6 +120,19 @@
                 <p>Serviços de manutenção preventiva e corretiva para garantir a durabilidade das obras.</p>
             </div>
         </div>
+        
+<section id="servicos" class="section-container">
+    <h2 class="title-impact centered">Construção</h2>
+
+        <div class="service-item filter-item construcao">
+            <div class="s-img"><img src="foto1.jpg" alt="Construções"></div>
+            <div class="s-text">
+                <h4>Construções Residenciais, Comerciais e Industriais</h4>
+                <p>Execução completa desde a fundação até a entrega final, garantindo qualidade e segurança.</p>
+            </div>
+        </div>
+
+
     </div>
 </section>
   </section>
@@ -125,7 +149,7 @@
             </div>
         </div>
     </section>
-    
+
     <footer id="contato" class="footer">
         <div class="footer-grid">
             <div class="f-brand">
@@ -193,6 +217,41 @@ function filterServices(category) {
             item.style.display = 'none'; // Esconde
         }
     });
+}
+</script>
+<script>
+const galeria = document.getElementById('galeria');
+
+// Função principal que inicia o movimento
+function iniciarCarrossel() {
+    // 1. Duplica o conteúdo para o loop
+    galeria.innerHTML += galeria.innerHTML;
+
+    let scrollPos = 0;
+    const speed = 1.5; // Velocidade (pixels por frame)
+
+    function render() {
+        scrollPos += speed;
+
+        // Reset do loop: se chegou na metade, volta ao início
+        if (scrollPos >= galeria.scrollWidth / 2) {
+            scrollPos = 0;
+        }
+
+        galeria.scrollLeft = scrollPos;
+
+        // O requestAnimationFrame é o que garante que NÃO trave
+        requestAnimationFrame(render);
+    }
+
+    render();
+}
+
+// O SEGREDO: Só executa quando TUDO (imagens inclusas) carregar
+if (document.readyState === 'complete') {
+    iniciarCarrossel();
+} else {
+    window.addEventListener('load', iniciarCarrossel);
 }
 </script>
 </body>

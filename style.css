@@ -20,9 +20,27 @@ body {
 
 /* --- HEADER RESPONSIVO --- */
 /* --- SEU HEADER ORIGINAL (NÃO ALTERADO) --- */
+/* --- RESET PARA EVITAR ROLAGEM LATERAL --- */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Trava a rolagem para os lados */
+    margin: 0;
+    padding: 0;
+}
+
+/* --- CONFIGURAÇÕES GERAIS --- */
+:root {
+    --primary: #ffcc00; 
+    --bg-dark: #121212;
+    --white: #ffffff;
+    --secondary: #000000;
+}
+
+/* --- HEADER / NAVIGATION (FIXA) --- */
 .header-wrapper {
     position: fixed;
-    top: 0; width: 100%;
+    top: 0; 
+    width: 100%;
     background: var(--bg-dark);
     z-index: 1000;
     border-bottom: 3px solid var(--primary);
@@ -38,8 +56,11 @@ body {
     height: 80px;
 }
 
-.logo-wrapper { height: 100%; display: flex; align-items: center; padding: 10px 0; }
-.logo-wrapper img { height: 60px; width: auto; object-fit: contain; }
+.logo-wrapper img { 
+    height: 60px; 
+    width: auto; 
+    object-fit: contain; 
+}
 
 .navigation ul {
     display: flex;
@@ -53,10 +74,7 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     text-transform: uppercase;
-    transition: 0.3s;
 }
-
-.navigation ul li a:hover { color: var(--primary); }
 
 .btn-cta {
     background: var(--primary);
@@ -64,103 +82,86 @@ body {
     padding: 0.6rem 1.2rem;
     border-radius: 4px;
     font-weight: 700;
+    text-decoration: none;
 }
 
-/* --- GALERIA TEMA OBRAS (AJUSTADA) --- */
-:root {
-    --primary: #ffcc00; 
-    --dark: #121212;
-    --transition: all 0.3s ease;
-    --shadow-solid: 5px 5px 0px #000;
-}
-
-.galeria-wrapper {
-    position: relative;
-    padding: 80px 0 0px; /* Colado no header */
-    background: #1a1a1a;
-    display: flex;
-    align-items: center; /* Centraliza o conteúdo verticalmente */
-    min-height: 600px;   /* Garante espaço para as fotos de 500px */
-    overflow: hidden;
-}
-
-#galeria {
-    display: flex;
-    gap: 15px;
-    padding: 50px 5%; 
-    overflow-x: auto;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
+/* --- GALERIA DE IMAGENS --- */
+.promo-container {
+    /* Espaço para não ficar colado na Nav no Desktop */
+    margin-top: 120px; 
+    overflow: hidden; /* Garante que o carrossel não crie barra de rolagem */
     width: 100%;
+    padding: 40px 0;
+    position: relative;
 }
 
-#galeria::-webkit-scrollbar { display: none; }
-
-#galeria img {
-    flex: 0 0 auto;
-    width: calc((100% / 3) - 20px);
-    height: 460px;
-    box-shadow: var(--shadow-solid);
-    transition: var(--transition);
-}
-
-#galeria img:hover {
-    filter: grayscale(0%);
-    border-color: var(--primary);
-    transform: translateY(-5px);
-}
-
-/* --- BOTÕES CENTRALIZADOS --- */
-.btn-nav {
-    position: absolute;
-    /* O segredo para centralizar: */
-    top: 50%; 
-    margin-top: 40px; /* Compensa a altura do header para alinhar com o centro da imagem */
-    transform: translateY(-50%);
-    
-    z-index: 1100; 
-    background-color: var(--primary);
-    color: #000;
-    border: 3px solid #000;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
+.promo {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-    box-shadow: 4px 4px 0px #000;
+    width: max-content; 
+    gap: 40px; 
+    animation: rolarInfinito 30s linear infinite;
 }
 
-.btn-prev { left: 20px; }
-.btn-next { right: 20px; }
-
-.btn-nav:hover {
+.promo img {
+    width: 320px; 
+    height: 450px;
+    object-fit: cover;
     background-color: #fff;
-    transform: translateY(-50%) scale(1.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
-.btn-nav:active {
-    box-shadow: 0px 0px 0px #000;
-    transform: translateY(-50%) translate(3px, 3px);
+@keyframes rolarInfinito {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-    #galeria img { width: calc(50% - 20px); }
-}
-
+/* --- AJUSTES EXCLUSIVOS PARA MOBILE --- */
 @media (max-width: 768px) {
-    #galeria img { width: calc(100% - 10px); }
-    .btn-nav { 
-        width: 45px; 
-        height: 45px; 
-        margin-top: 40px;
+    /* Impede qualquer saída lateral no mobile */
+    body {
+        position: relative;
     }
-    .btn-prev { left: 10px; }
-    .btn-next { right: 10px; }
+
+    .promo-container {
+        /* Aumentamos o margin-top para 150px para afastar da nav no mobile */
+        margin-top: 150px !important; 
+        padding: 30px 0;
+    }
+
+    .promo {
+        gap: 10px;
+    }
+
+    .promo img {
+        /* Imagens maiores no mobile conforme pedido */
+        width: 240px; 
+        height: 340px;
+    }
+
+    /* Esconde menu se for muito grande para a tela pequena, 
+       ajuste conforme seu menu */
+    .navigation ul {
+        gap: 0.8rem;
+    }
+    
+    .navigation ul li a {
+        font-size: 0.75rem;
+    }
+}
+
+/* Celulares pequenos (iPhone SE, etc) */
+@media (max-width: 400px) {
+    .promo-container {
+        margin-top: 140px !important;
+    }
+    
+    .promo img {
+        width: 200px;
+        height: 280px;
+    }
 }
 
 .yellow-line { width: 60px; height: 4px; background: var(--primary); margin: 15px auto; }
@@ -168,7 +169,7 @@ body {
 .hero p { font-size: clamp(1rem, 3vw, 1.4rem); max-width: 700px; margin: 0 auto; }
 
 /* --- SEÇÕES --- */
-.section-container { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+.section-container { padding: 30px 5%; max-width: 1200px; margin: 0 auto; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
 
