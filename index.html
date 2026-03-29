@@ -17,7 +17,6 @@
             </a>
             <nav class="navigation">
                 <ul>
-                    <li><a href="#inicio">Início</a></li>
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="serv.html" class="btn-cta">Orçamento</a></li>
                 </ul>
@@ -62,81 +61,232 @@
     <p>Transformamos espaços residenciais e comerciais com alto padrão de acabamento em Caxias do Sul.</p>
 </div>
 
- 
-    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #ffcc00;
+            --bg-light: #f9f9f9;
+            --text-dark: #333;
+        }
 
-    <div class="filter-wrapper" style="text-align: center; margin-bottom: 30px;">
-        <label for="service-filter" style="margin-right: 10px;">Filtrar por:</label>
-        <select id="service-filter" onchange="filterServices(this.value)" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-            <option value="todos">Mostrar Todos</option>
-            <option value="residencial">Reformas Residenciais e Comercial</option>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-light); color: var(--text-dark); margin: 0; padding: 0; }
+
+        /* Estilização Moderna do Filtro */
+        .filter-wrapper {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .filter-wrapper label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        #service-filter {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 18px;
+        }
+
+        #service-filter:focus { border-color: var(--accent-color); box-shadow: 0 0 8px rgba(230, 126, 34, 0.2); }
+
+        /* Container de Seções */
+        .section-container { max-width: 1100px; margin: 0 auto 80px auto; padding: 0 20px; }
+        .title-impact {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .title-impact::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+
+        /* Layout Alternado */
+        .services-list { display: flex; flex-direction: column; gap: 60px; }
+        .service-item { display: flex; align-items: center; gap: 50px; }
+        .service-item.reverse { flex-direction: row-reverse; }
+
+        .s-img { flex: 1.2; }
+        .s-text { flex: 1; }
+
+        .s-img img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .s-text h4 { font-size: 1.6rem; margin: 0 0 15px 0; color: var(--primary-color); }
+        .s-text p { font-size: 1.05rem; line-height: 1.8; color: #666; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .service-item, .service-item.reverse { flex-direction: column; text-align: center; }
+            .s-img img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="filter-wrapper">
+        <label for="service-filter">O que você está procurando?</label>
+        <select id="service-filter" onchange="filterServices(this.value)">
+            <option value="todos">Mostrar Todos os Serviços</option>
+            <option value="residencial">Reformas Residenciais e Comerciais</option>
             <option value="alto-padrao">Reformas de Alto Padrão</option>
             <option value="retrofit">Retrofit e Modernização</option>
             <option value="estrutural">Reformas Estruturais</option>
-            <option value="construcao">Construções Residenciais, Comerciais e Industriais</option>
             <option value="manutencao">Manutenção e Assistência Técnica</option>
+            <option value="construcao">Construções e Obras Novas</option>
+            <option value="projetos">Projetos Arquitetônicos</option>
         </select>
     </div>
-<section id="servicos" class="section-container">
-    <h2 class="title-impact centered">Reformas</h2>
 
-    <div class="services-list">
-        <div class="service-item filter-item residencial">
-            <div class="s-img"><img src="obras2.jpeg" alt="Reforma Residencial"></div>
-            <div class="s-text">
-                <h4>Reformas Residenciais, Comerciais e de Ambientes</h4>
-                <p>Reformas completas ou parciais em casas, apartamentos e espaços comerciais.</p>
-                
+    <section id="sec-reformas" class="section-container">
+        <h2 class="title-impact">Reformas</h2>
+        <div class="services-list">
+            <div class="service-item filter-item residencial">
+                <div class="s-img"><img src="obras2.jpeg" alt="Reforma"></div>
+                <div class="s-text">
+                    <h4>Reformas Residenciais e Comerciais</h4>
+                    <p>Reformas completas ou parciais em casas, apartamentos e espaços comerciais com foco em eficiência.</p>
+                </div>
+            </div>
+
+            <div class="service-item reverse filter-item alto-padrao">
+                <div class="s-img"><img src="foto2.jpg" alt="Alto Padrão"></div>
+                <div class="s-text">
+                    <h4>Reformas de Alto Padrão</h4>
+                    <p>Execução de alto nível com acabamentos premium e soluções exclusivas para clientes exigentes.</p>
+                </div>
+            </div>
+
+            <div class="service-item filter-item retrofit">
+                <div class="s-img"><img src="foto3.jpg" alt="Retrofit"></div>
+                <div class="s-text">
+                    <h4>Retrofit e Modernização</h4>
+                    <p>Revitalização de edificações antigas, atualizando sistemas e estética sem perder a essência.</p>
+                </div>
+            </div>
+
+            <div class="service-item reverse filter-item estrutural">
+                <div class="s-img"><img src="foto4.jpg" alt="Estrutural"></div>
+                <div class="s-text">
+                    <h4>Reformas Estruturais</h4>
+                    <p>Intervenções técnicas, reforços e mudanças de layout com total segurança e acompanhamento.</p>
+                </div>
+            </div>
+
+            <div class="service-item filter-item manutencao">
+                <div class="s-img"><img src="foto6.jpg" alt="Manutenção"></div>
+                <div class="s-text">
+                    <h4>Manutenção e Assistência Técnica</h4>
+                    <p>Cuidado preventivo e corretivo para garantir que sua obra permaneça impecável por anos.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="service-item reverse filter-item alto-padrao">
-            <div class="s-img"><img src="foto2.jpg" alt="Reformas de Alto Padrão"></div>
-            <div class="s-text">
-                <h4>Reformas de Alto Padrão</h4>
-                <p>Execução de reformas com acabamentos premium e melhorias técnicas de alto nível.</p>
+    <section id="sec-construcao" class="section-container">
+        <h2 class="title-impact">Construção</h2>
+        <div class="services-list">
+            <div class="service-item filter-item construcao">
+                <div class="s-img"><img src="key1.jpg" alt="Turn-Key"></div>
+                <div class="s-text">
+                    <h4>Obras Turn-Key (Chave na Mão)</h4>
+                    <p>Cuidamos de tudo, da fundação à entrega das chaves, para que você não tenha preocupações.</p> 
+                </div>   
+            </div>
+
+            <div class="service-item reverse filter-item construcao">
+                <div class="s-img"><img src="key2.jpg" alt="Gerenciamento"></div>
+                <div class="s-text">
+                    <h4>Gestão e Gerenciamento de Obras</h4>
+                    <p>Controle rigoroso de cronograma, fornecedores e custos para otimizar seu investimento.</p> 
+                </div>   
+            </div>
+
+            <div class="service-item filter-item construcao">
+                <div class="s-img"><img src="key3.jpg" alt="Ampliações"></div>
+                <div class="s-text">
+                    <h4>Ampliações e Novas Estruturas</h4>
+                    <p>Criação de novos pavimentos ou anexos mantendo a harmonia com a construção existente.</p> 
+                </div>   
+            </div>
+
+            <div class="service-item reverse filter-item projetos">
+                <div class="s-img"><img src="key4.jpg" alt="Projetos"></div>
+                <div class="s-text">
+                    <h4>Projetos Arquitetônicos</h4>
+                    <p>Criação de conceitos modernos e plantas detalhadas para transformar seu sonho em realidade.</p> 
+                </div>   
             </div>
         </div>
+    </section>
 
-        <div class="service-item filter-item retrofit">
-            <div class="s-img"><img src="foto3.jpg" alt="Retrofit e Modernização"></div>
-            <div class="s-text">
-                <h4>Retrofit e Modernização</h4>
-                <p>Atualização de imóveis antigos adaptando o espaço às necessidades atuais.</p>
-            </div>
-        </div>
+    <script>
+    function filterServices(category) {
+        const items = document.querySelectorAll('.filter-item');
+        const sectionRef = document.getElementById('sec-reformas');
+        const sectionCons = document.getElementById('sec-construcao');
 
-        <div class="service-item reverse filter-item estrutural">
-            <div class="s-img"><img src="foto4.jpg" alt="Reformas Estruturais"></div>
-            <div class="s-text">
-                <h4>Reformas Estruturais</h4>
-                <p>Alterações de layout, reforços estruturais e adequações técnicas seguras.</p>
-            </div>
-        </div>
-        <div class="service-item reverse filter-item manutencao">
-            <div class="s-img"><img src="foto6.jpg" alt="Manutenção"></div>
-            <div class="s-text">
-                <h4>Manutenção e Assistência Técnica</h4>
-                <p>Serviços de manutenção preventiva e corretiva para garantir a durabilidade das obras.</p>
-            </div>
-        </div>
-        
-<section id="servicos" class="section-container">
-    <h2 class="title-impact centered">Construção</h2>
+        // Categorias que pertencem à Reforma
+        const isReformaCat = ['residencial', 'alto-padrao', 'retrofit', 'estrutural', 'manutencao'].includes(category);
+        // Categorias que pertencem à Construção
+        const isConstrucaoCat = ['construcao', 'projetos'].includes(category);
 
-        <div class="service-item filter-item construcao">
-            <div class="s-img"><img src="foto1.jpg" alt="Construções"></div>
-            <div class="s-text">
-                <h4>Construções Residenciais, Comerciais e Industriais</h4>
-                <p>Execução completa desde a fundação até a entrega final, garantindo qualidade e segurança.</p>
-            </div>
-        </div>
+        items.forEach(item => {
+            if (category === 'todos' || item.classList.contains(category)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        // Controle de Exibição das Seções (H2 e Container)
+        if (category === 'todos') {
+            sectionRef.style.display = 'block';
+            sectionCons.style.display = 'block';
+        } else if (isReformaCat) {
+            sectionRef.style.display = 'block';
+            sectionCons.style.display = 'none';
+        } else if (isConstrucaoCat) {
+            sectionRef.style.display = 'none';
+            sectionCons.style.display = 'block';
+        }
+    }
+    </script>
 
 
-    </div>
-</section>
-  </section>
-
+<hr>
 
     <section id="sobre" class="section-container">
         <div class="grid-2">
@@ -150,14 +300,49 @@
         </div>
     </section>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliações - GM Obras</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+
+    <section class="reviews-section">
+        <div class="hero-text-container">
+            <h1>Avaliações de Clientes</h1>
+            <p>Serviço de primeira e confiança garantida em cada projeto.</p>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <img src="avali.jpg" alt="Avaliação 1">
+            </div>
+            <div class="review-card">
+                <img src="avali2.jpg" alt="Avaliação 2">
+            </div>
+            <div class="review-card">
+                <img src="avali3.jpg" alt="Avaliação 3">
+            </div>
+            <div class="review-card">
+                <img src="avali4.jpg" alt="Avaliação 4">
+            </div>
+            <div class="review-card">
+                <img src="avali5.jpg" alt="Avaliação 5">
+            </div>
+            <div class="review-card">
+                <img src="avali6.jpeg" alt="Avaliação 6">
+            </div>
+        </div>
+    </section>
+
     <footer id="contato" class="footer">
         <div class="footer-grid">
             <div class="f-brand">
-                <div class="footer-logo-wrapper"><img src="watts.jpeg" alt="GM Obras Logo"></div>
+                <div class="footer-logo-wrapper"><img src="WhatsApp Image 2026-03-06 at 07.58.44.jpeg" alt="GM Obras Logo"></div>
                 <p>Engenharia que constrói confiança.</p>
             </div>
             <div class="f-info">
-                <p>📍 Caxias do Sul - RS</p>
+                <a href="https://maps.app.goo.gl/FQcC3fNANXRWy7ZL6?g_st=iwb">📍 Caxias do Sul - RS</a>
                 <p>📞 (54) 98108-1564</p>
             </div>
         </div>

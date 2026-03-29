@@ -299,3 +299,103 @@ html, body {
         font-size: 1.6rem;
     }
 }
+/* --- VARIÁVEIS UNIFICADAS --- */
+:root {
+    --primary: #FFD700;    
+    --secondary: #000000;  
+    --white: #FFFFFF;
+    --bg-dark: #1a1a1a;
+    --font-main: 'Montserrat', sans-serif;
+}
+
+/* --- RESET DE SEGURANÇA --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden; /* Evita o bug de ir para os lados */
+}
+
+/* --- CONTAINER DE TEXTO (ESTILO QUE VOCÊ ENVIOU) --- */
+.hero-text-container {
+    background-color: var(--bg-dark);
+    color: var(--white);
+    border-left: 15px solid var(--primary); 
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1100px;
+    padding: 30px;
+}
+
+.hero-text-container h1 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* --- GRID DE AVALIAÇÕES (OS 5 ESPAÇOS) --- */
+.reviews-section {
+    padding: 20px 0;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- RESPONSIVIDADE PARA CELULAR --- */
+@media (max-width: 768px) {
+    .hero-text-container {
+        width: 100%;
+        border-left: 10px solid var(--primary);
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr; /* Uma imagem por linha no celular */
+    }
+
+    .hero-text-container h1 {
+        font-size: 1.4rem;
+    }
+}
+a {
+  color: white;            /* Define a cor como branco */
+  text-decoration: none;   /* Remove o sublinhado (a "barra") */
+  cursor: text;            /* Muda o ponteiro do mouse para parecer seleção de texto */
+}
+
+/* Opcional: Garante que o link continue parecendo texto mesmo após ser clicado */
+a:visited, a:hover, a:active {
+  color: white;
+  text-decoration: none;
+}
