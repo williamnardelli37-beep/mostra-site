@@ -37,11 +37,12 @@ html, body {
 }
 
 /* --- HEADER / NAVIGATION (FIXA) --- */
+/* --- HEADER / NAVIGATION (FIXA) --- */
 .header-wrapper {
     position: fixed;
     top: 0; 
     width: 100%;
-    background: var(--bg-dark);
+    background: #000000; /* Forçando a cor preta aqui */
     z-index: 1000;
     border-bottom: 3px solid var(--primary);
 }
