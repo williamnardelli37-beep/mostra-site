@@ -204,7 +204,7 @@ body {
 /* --- FOOTER --- */
 .footer { background: var(--secondary); color: white; padding: 60px 5% 20px; text-align: center; }
 .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; }
-.footer-logo-wrapper img { height: 50px; }
+.footer-logo-wrapper img { height: 50px; } 
 
 /* --- BOTÕES FLUTUANTES --- */
 .fab-wrapper { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
