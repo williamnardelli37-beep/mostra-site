@@ -79,7 +79,7 @@ let tipoAtual = "Construção";
             return;
         }
 
-        const numeroWhats = "5554981081564"; 
+        const numeroWhats = "54999154578"; 
         
         const mensagem = `*🏗️ GM OBRAS - NOVO ORÇAMENTO*%0A%0A` +
                          `*SOLICITAÇÃO:* ${tipoAtual}%0A` +
